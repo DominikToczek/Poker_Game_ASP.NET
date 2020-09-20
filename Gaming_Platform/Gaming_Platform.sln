@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamePlatform", "GamePlatform\GamePlatform.csproj", "{B2B792A0-8357-40F1-8126-694DB2192087}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamingPlatformTests", "GamingPlatformTests\GamingPlatformTests.csproj", "{916E6A03-325D-4C7F-93EE-FC2C41D16C68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2B792A0-8357-40F1-8126-694DB2192087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B792A0-8357-40F1-8126-694DB2192087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B792A0-8357-40F1-8126-694DB2192087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B792A0-8357-40F1-8126-694DB2192087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{916E6A03-325D-4C7F-93EE-FC2C41D16C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{916E6A03-325D-4C7F-93EE-FC2C41D16C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{916E6A03-325D-4C7F-93EE-FC2C41D16C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{916E6A03-325D-4C7F-93EE-FC2C41D16C68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1D05BB4-B4B9-41B2-A2EA-FA2314150FEE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,66 @@
+﻿@section Scripts {
+    <script src="~/js/Poker.js"></script>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Poker.css" />
+}
+
+<div class="board-container">
+    <div class="cards-container">
+        <div class="poker-card" id="card-1">
+            <div class="card-container" id="card-container-1">
+                <div id="card-suit-1"></div>
+                <div id="card-value-1"></div>
+            </div>
+            <div class="change-card" id="change-1">
+                <button onclick="changeCard1()" class="change-card-button" id="changeCard1">Change card</button>
+            </div>
+        </div>
+        <div class="poker-card" id="card-2">
+            <div class="card-container" id="card-container-2">
+                <div id="card-suit-2"></div>
+                <div id="card-value-2"></div>
+            </div>
+            <div class="change-card" id="change-2">
+                <button onclick="changeCard2()" class="change-card-button" id="changeCard2">Change card</button>
+            </div>
+        </div>
+        <div class="poker-card" id="card-3">
+            <div class="card-container" id="card-container-3">
+                <div id="card-suit-3"></div>
+                <div id="card-value-3"></div>
+            </div>
+            <div class="change-card" id="change-3">
+                <button onclick="changeCard3()" class="change-card-button" id="changeCard3">Change card</button>
+            </div>
+        </div>
+        <div class="poker-card" id="card-4">
+            <div class="card-container" id="card-container-4">
+                <div id="card-suit-4"></div>
+                <div id="card-value-4"></div>
+            </div>
+            <div class="change-card" id="change-4">
+                <button onclick="changeCard4()" class="change-card-button" id="changeCard4">Change card</button>
+            </div>
+        </div>
+        <div class="poker-card" id="card-5">
+            <div class="card-container" id="card-container-5">
+                <div id="card-suit-5"></div>
+                <div id="card-value-5"></div>
+            </div>
+            <div class="change-card" id="change-5">
+                <button onclick="changeCard5()" class="change-card-button" id="changeCard5">Change card</button>
+            </div>
+        </div>
+    </div>
+    <div class="buttons-container">
+        <button class="card-game-button" onclick="newGame()" id="newGame">New Game</button>
+        <button class="card-game-button" onclick="checkGame()" id="checkGame">Check</button>
+    </div>
+</div>
+
+<div id="poker-overlay" onclick="closeOverlay()">
+    <div class="poker-popup" id="poker-winner"></div>
+    <div class="poker-popup" id="poker-layout"></div>
+</div>
