@@ -5,6 +5,58 @@ let cardClicked4 = false;
 let cardClicked5 = false;
 let isCheckBlocked = true;
 
+function addUser() {
+    $.ajax({
+        type: "POST",
+        data: { firstName: "Dominik", lastName: "Toczek", email: "dominiktoczek@interia.pl", login: "Dominik", password: "DominikPass" },
+        url: "/Poker/AddUser",
+        success: function (response) {
+        },
+        error: function (response) {
+            console.log("Coś poszło nie tak" + response)
+        }
+    })
+}
+
+function addAnnouncement() {
+    $.ajax({
+        type: "POST",
+        data: { date: "03.10.2020", city: "Krakow", category: "History", title: "Krzyzacy", author: "Henryk Sienkiewicz", description: "Description" },
+        url: "/Poker/AddAnnouncement",
+        success: function (response) {
+        },
+        error: function (response) {
+            console.log("Coś poszło nie tak" + response)
+        }
+    })
+}
+
+function getAllUsers() {
+    $.ajax({
+        type: "POST",
+        url: "/Poker/GetAllUsers",
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (response) {
+            console.log("Coś poszło nie tak" + response)
+        }
+    })
+}
+
+function getAllAnnouncements() {
+    $.ajax({
+        type: "POST",
+        url: "/Poker/GetAllAnnouncements",
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (response) {
+            console.log("Coś poszło nie tak" + response)
+        }
+    })
+}
+
 async function newGame() {
     await dealCards();
     await resetChangeCardsButtons()
@@ -31,7 +83,6 @@ function checkGame() {
         })
         isCheckBlocked = true
     }
-
 }
 
 function showWinner(response) {

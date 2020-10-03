@@ -1,15 +1,18 @@
 ﻿using GamePlatform.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace GamePlatform.Controllers
 {
     public class PokerController : Controller
     {
         private readonly IDeal deal;
+        private readonly ILocalDatabase db;
 
-        public PokerController(Deal deal)
+        public PokerController(LocalDatabase db)
         {
-            this.deal = deal;
+            this.deal = new Deal();
+            this.db = db;
         }
 
         public ViewResult Poker()
@@ -18,9 +21,35 @@ namespace GamePlatform.Controllers
         }
 
         [HttpPost]
-        public void DealCards()
+        public void AddUser(string firstName, string lastName, string email, string login, string password)
         {
-            deal.DealCards();
+            var user = new User(firstName, lastName, email, login, password);
+
+            db.AddUser(user);
+        }
+
+        [HttpPost]
+        public void AddAnnouncement(string date, string city, string category, string title, string author, string description)
+        {
+            var announcement = new Announcement(date, city, category, title, author, description);
+
+            db.AddAnnouncement(announcement);
+        }
+
+        [HttpPost]
+        public ActionResult GetAllUsers()
+        {
+            var usersList = db.GetAllUsers();
+
+            return Json(usersList);
+        }
+
+        [HttpPost]
+        public ActionResult GetAllAnnouncements()
+        {
+            var announcementsList = db.GetAllAnnouncements();
+
+            return Json(announcementsList);
         }
 
         [HttpPost]
