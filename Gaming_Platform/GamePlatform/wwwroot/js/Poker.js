@@ -5,6 +5,60 @@ let cardClicked4 = false;
 let cardClicked5 = false;
 let isCheckBlocked = true;
 
+function RegisterUser() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "visible"
+    document.getElementById("login-container-id").style.visibility = "hidden"
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+}
+
+function cancelRegisterUser() {
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+    clearRegisterUserForm()
+}
+
+function Login() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("login-container-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+}
+
+function cancelLoginUser() {
+    document.getElementById("login-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+}
+
+function NewAnnouncement() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("new-announcement-container-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("login-container-id").style.visibility = "hidden"
+}
+
+function cancelNewAnnouncement() {
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+    clearNewAnnouncementForm()
+}
+
+function clearRegisterUserForm() {
+    document.getElementById("fname").value = ""
+    document.getElementById("lname").value = ""
+    document.getElementById("mail").value = ""
+    document.getElementById("login").value = ""
+    document.getElementById("pass").value = ""
+}
+
+function clearNewAnnouncementForm() {
+    document.getElementById("title").value = ""
+    document.getElementById("author").value = ""
+    document.getElementById("category").value = ""
+    document.getElementById("city").value = ""
+    document.getElementById("description").value = ""
+}
+
 function addUser() {
     fname = document.getElementById("fname").value
     lname = document.getElementById("lname").value
@@ -16,11 +70,8 @@ function addUser() {
         data: { firstName: fname, lastName: lname, email: mail, login: login, password: pass },
         url: "/Poker/AddUser",
         success: function (response) {
-            document.getElementById("fname").value = ""
-            document.getElementById("lname").value = ""
-            document.getElementById("mail").value = ""
-            document.getElementById("login").value = ""
-            document.getElementById("pass").value = ""
+            clearRegisterUserForm()
+            cancelRegisterUser();
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
@@ -46,11 +97,8 @@ function addAnnouncement() {
         data: { date: date, city: city, category: category, title: title, author: author, description: description },
         url: "/Poker/AddAnnouncement",
         success: function (response) {
-            document.getElementById("title").value = ""
-            document.getElementById("author").value = ""
-            document.getElementById("category").value = ""
-            document.getElementById("city").value = ""
-            document.getElementById("description").value = ""
+            clearNewAnnouncementForm()
+            cancelNewAnnouncement()
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
