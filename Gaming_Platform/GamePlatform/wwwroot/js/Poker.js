@@ -6,11 +6,21 @@ let cardClicked5 = false;
 let isCheckBlocked = true;
 
 function addUser() {
+    fname = document.getElementById("fname").value
+    lname = document.getElementById("lname").value
+    mail = document.getElementById("mail").value
+    login = document.getElementById("login").value
+    pass = document.getElementById("pass").value
     $.ajax({
         type: "POST",
-        data: { firstName: "Dominik", lastName: "Toczek", email: "dominiktoczek@interia.pl", login: "Dominik", password: "DominikPass" },
+        data: { firstName: fname, lastName: lname, email: mail, login: login, password: pass },
         url: "/Poker/AddUser",
         success: function (response) {
+            document.getElementById("fname").value = ""
+            document.getElementById("lname").value = ""
+            document.getElementById("mail").value = ""
+            document.getElementById("login").value = ""
+            document.getElementById("pass").value = ""
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
@@ -19,11 +29,28 @@ function addUser() {
 }
 
 function addAnnouncement() {
+    let today = new Date()
+    let dd = String(today.getDate()).padStart(2, '0')
+    let mm = String(today.getMonth() + 1).padStart(2, '0')
+    let yyyy = today.getFullYear()
+
+    title = document.getElementById("title").value
+    author = document.getElementById("author").value
+    category = document.getElementById("category").value
+    city = document.getElementById("city").value
+    description = document.getElementById("description").value
+    date = mm + '/' + dd + '/' + yyyy;
+
     $.ajax({
         type: "POST",
-        data: { date: "03.10.2020", city: "Krakow", category: "History", title: "Krzyzacy", author: "Henryk Sienkiewicz", description: "Description" },
+        data: { date: date, city: city, category: category, title: title, author: author, description: description },
         url: "/Poker/AddAnnouncement",
         success: function (response) {
+            document.getElementById("title").value = ""
+            document.getElementById("author").value = ""
+            document.getElementById("category").value = ""
+            document.getElementById("city").value = ""
+            document.getElementById("description").value = ""
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
