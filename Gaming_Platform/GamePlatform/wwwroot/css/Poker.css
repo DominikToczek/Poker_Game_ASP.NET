@@ -1,6 +1,22 @@
 ﻿.page-container {
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fef7eb;
+}
+
+.dark-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(16, 16, 16, 0.8);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 220px;
+    visibility: hidden;
 }
 
 .banner-container {
@@ -39,6 +55,65 @@
     cursor: pointer;
 }
 
+.popup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 250px;
+    visibility: hidden;
+    z-index: 100;
+}
+
+.popup-box {
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffeecc;
+    padding: 10px 25px;
+    border: gray;
+    border-style: solid;
+}
+
+.popup-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border: gray;
+    border-style: solid;
+    border-width: 1px;
+    width: 75%;
+    border-left: transparent;
+    border-right: transparent;
+}
+
+.popup-parameter-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 20px 5px 2px;
+    padding-left: 0px;
+    padding-top: 15px;
+    padding-right: 0px;
+    width: 100%;
+}
+
 .announcements-container {
     display: flex;
     flex-direction: column;
@@ -61,11 +136,43 @@
     justify-content: center;
 }
 
-.announcement-box {
+.announcements-table {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 }
 
+.announcement-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    border: gray;
+    border-style: solid;
+    border-width: 2px;
+    min-height: 100px;
+}
 
+.announcement-inner-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.announcement-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    margin: 10px;
+    overflow-wrap: anywhere;
+}
 
 
 
@@ -121,12 +228,6 @@
     transition: linear 0.3s;
 }
 
-.buttons-container {
-    text-align: center;
-    bottom: 100px;
-    position: relative;
-}
-
 .change-card {
     position: relative;
     text-align: center;
@@ -134,7 +235,6 @@
 }
 
 .card-game-button {
-    margin: 0 40px;
     min-width: 120px;
     background-color: #77000b;
     color: white;

@@ -5,6 +5,64 @@ let cardClicked4 = false;
 let cardClicked5 = false;
 let isCheckBlocked = true;
 
+window.onload = function () {
+    getAllAnnouncements()
+}
+
+function RegisterUser() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "visible"
+    document.getElementById("login-container-id").style.visibility = "hidden"
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+}
+
+function cancelRegisterUser() {
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+    clearRegisterUserForm()
+}
+
+function Login() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("login-container-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+}
+
+function cancelLoginUser() {
+    document.getElementById("login-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+}
+
+function NewAnnouncement() {
+    document.getElementById("dark-overlay-id").style.visibility = "visible"
+    document.getElementById("new-announcement-container-id").style.visibility = "visible"
+    document.getElementById("register-container-id").style.visibility = "hidden"
+    document.getElementById("login-container-id").style.visibility = "hidden"
+}
+
+function cancelNewAnnouncement() {
+    document.getElementById("new-announcement-container-id").style.visibility = "hidden"
+    document.getElementById("dark-overlay-id").style.visibility = "hidden"
+    clearNewAnnouncementForm()
+}
+
+function clearRegisterUserForm() {
+    document.getElementById("fname").value = ""
+    document.getElementById("lname").value = ""
+    document.getElementById("mail").value = ""
+    document.getElementById("login").value = ""
+    document.getElementById("pass").value = ""
+}
+
+function clearNewAnnouncementForm() {
+    document.getElementById("title").value = ""
+    document.getElementById("author").value = ""
+    document.getElementById("category").value = ""
+    document.getElementById("city").value = ""
+    document.getElementById("description").value = ""
+}
+
 function addUser() {
     fname = document.getElementById("fname").value
     lname = document.getElementById("lname").value
@@ -16,11 +74,8 @@ function addUser() {
         data: { firstName: fname, lastName: lname, email: mail, login: login, password: pass },
         url: "/Poker/AddUser",
         success: function (response) {
-            document.getElementById("fname").value = ""
-            document.getElementById("lname").value = ""
-            document.getElementById("mail").value = ""
-            document.getElementById("login").value = ""
-            document.getElementById("pass").value = ""
+            clearRegisterUserForm()
+            cancelRegisterUser();
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
@@ -46,11 +101,8 @@ function addAnnouncement() {
         data: { date: date, city: city, category: category, title: title, author: author, description: description },
         url: "/Poker/AddAnnouncement",
         success: function (response) {
-            document.getElementById("title").value = ""
-            document.getElementById("author").value = ""
-            document.getElementById("category").value = ""
-            document.getElementById("city").value = ""
-            document.getElementById("description").value = ""
+            clearNewAnnouncementForm()
+            cancelNewAnnouncement()
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
@@ -77,6 +129,66 @@ function getAllAnnouncements() {
         url: "/Poker/GetAllAnnouncements",
         success: function (response) {
             console.log(response)
+
+            let table = document.getElementById("announcements-table-id")
+
+            for (i = 0; i < response.length; i++) {
+                let announcementBox = document.createElement('div')
+                announcementBox.setAttribute('class', 'announcement-row')
+
+                let titleAuthorCategoryColumn = document.createElement('div')
+                titleAuthorCategoryColumn.setAttribute('class', 'announcement-column')
+
+                let titleBox = document.createElement('div')
+                titleBox.textContent = "Title: " + response[i].title
+
+                let authorBox = document.createElement('div')
+                authorBox.textContent = "Author: " + response[i].author
+
+                let categoryBox = document.createElement('div')
+                categoryBox.textContent = "Category: " + response[i].category
+
+                titleAuthorCategoryColumn.appendChild(titleBox)
+                titleAuthorCategoryColumn.appendChild(authorBox)
+                titleAuthorCategoryColumn.appendChild(categoryBox)
+
+
+                let dateCityColumn = document.createElement('div')
+                dateCityColumn.setAttribute('class', 'announcement-column')
+
+                let dateBox = document.createElement('div')
+                dateBox.textContent = "Date: " + response[i].date
+
+                let cityBox = document.createElement('div')
+                cityBox.textContent = "City: " + response[i].city
+
+                dateCityColumn.appendChild(dateBox)
+                dateCityColumn.appendChild(cityBox)
+
+                let emptyColumn = document.createElement('div')
+                emptyColumn.setAttribute('class', 'announcement-column')
+
+                let announcementInnerRow1 = document.createElement('div')
+                announcementInnerRow1.setAttribute('class', 'announcement-inner-row')
+
+                announcementInnerRow1.appendChild(titleAuthorCategoryColumn)
+                announcementInnerRow1.appendChild(dateCityColumn)
+                //announcementInnerRow1.appendChild(emptyColumn)
+
+                let announcementInnerRow2 = document.createElement('div')
+                announcementInnerRow2.setAttribute('class', 'announcement-inner-row')
+
+                let descriptionColumn = document.createElement('div')
+                descriptionColumn.setAttribute('class', 'announcement-column')
+                descriptionColumn.textContent = "Description: " + response[i].description
+
+                announcementInnerRow2.appendChild(descriptionColumn)
+
+                announcementBox.appendChild(announcementInnerRow1)
+                announcementBox.appendChild(announcementInnerRow2)
+
+                table.appendChild(announcementBox)
+            }
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)

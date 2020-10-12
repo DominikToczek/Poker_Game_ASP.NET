@@ -6,68 +6,101 @@
     <link rel="stylesheet" href="~/css/Poker.css" />
 }
 
-<div class="page-container">
-    <div class="banner-container">
-    </div>
-    <div class="page-title-container">Book4Book</div>
-    <div class="menu-container">
-        <div class="menu-item">Start</div>
-        <div class="menu-item">Add Announcement</div>
-        <div class="menu-item">Login</div>
-        <div class="menu-item">Register</div>
-    </div>
-    <div class="announcements-container">
-        <div class="announcements-container-title">All Announcements</div>
-        <div class="announcement-box">Announcement 1</div>
-        <div class="announcement-box">Announcement 2</div>
-        <div class="announcement-box">Announcement 3</div>
-        <div class="announcement-box">Announcement 4</div>
-    </div>
+    <div class="page-container">
+        <div class="dark-overlay" id="dark-overlay-id"></div>
+        <div class="banner-container">
+        </div>
+        <div class="page-title-container">Book4Book</div>
+        <div class="menu-container">
+            <div class="menu-item">Start</div>
+            <div class="menu-item" onclick="NewAnnouncement()">Add Announcement</div>
+            <div class="menu-item" onclick="Login()">Login</div>
+            <div class="menu-item" onclick="RegisterUser()">Register</div>
+        </div>
+        <div class="announcements-container">
+            <div class="announcements-container-title">All Announcements</div>
+            <div class="announcements-table" id="announcements-table-id">
+            </div>
+        </div>
 
-    <div class="register-container">
-        <div class="register-title">Register user</div>
-        <div class="register-form">
-            <label for="fname">First name:</label><br />
-            <input type="text" id="fname" name="fname" required><br>
-            <label for="lname">Last name:</label><br />
-            <input type="text" id="lname" name="lname" required><br />
-            <label for="mail" required>E-mail:</label><br />
-            <input type="text" id="mail" name="mail" required><br />
-            <label for="login" required>Login:</label><br />
-            <input type="text" id="login" name="login" required><br />
-            <label for="pass" required>Password:</label><br />
-            <input type="text" id="pass" name="pass" required><br />
-            <button class="card-game-button" onclick="addUser()" id="addUser">Add User</button>
+        <div class="popup-container" id="register-container-id">
+            <div class="popup-box">
+                <div class="popup-title">Register user</div>
+                <div class="popup-parameter-row">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="lname" required>
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="mail" required>E-mail:</label>
+                    <input type="text" id="mail" name="mail" required>
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="login" required>Login:</label>
+                    <input type="text" id="login" name="login" required>
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="pass" required>Password:</label>
+                    <input type="text" id="pass" name="pass" required>
+                </div>
+                <div class="buttons-container">
+                    <button class="card-game-button" onclick="addUser()" id="addUser">Register</button>
+                    <button class="card-game-button" onclick="cancelRegisterUser()" id="cancelRegisterUser">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-container" id="login-container-id">
+            <div class="popup-box">
+                <div class="popup-title">Login</div>
+                <div class="popup-parameter-row">
+                    <label for="login" required>Login:</label>
+                    <input type="text" id="loginUser" name="login" required>
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="pass" required>Password:</label>
+                    <input type="text" id="passUser" name="pass" required>
+                </div>
+                <div class="buttons-container">
+                    <button class="card-game-button" onclick="loginUser()" id="addUser">Login</button>
+                    <button class="card-game-button" onclick="cancelLoginUser()" id="cancelLoginUser">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-container" id="new-announcement-container-id">
+            <div class="popup-box">
+                <div class="popup-title">New Announcement</div>
+                <div class="popup-parameter-row">
+                    <label for="title" required>Title:</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="author" required>Author:</label>
+                    <input type="text" id="author" name="author">
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="category" required>Category:</label>
+                    <input type="text" id="category" name="category">
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="city" required>City:</label>
+                    <input type="text" id="city" name="city">
+                </div>
+                <div class="popup-parameter-row">
+                    <label for="description" required>Description:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div class="buttons-container">
+                    <button class="card-game-button" onclick="addAnnouncement()" id="addAnnouncement">Add</button>
+                    <button class="card-game-button" onclick="cancelNewAnnouncement()" id="cancelNewAnnouncement">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="login-container">
-        <div class="login-title">Login</div>
-        <div class="login-form">
-            <label for="login2" required>Login:</label><br />
-            <input type="text" id="login2" name="login"><br />
-            <label for="pass2" required>Password:</label><br />
-            <input type="text" id="pass2" name="pass"><br />
-        </div>
-    </div>
-
-    <div class="new-announcement-container">
-        <div class="new-announcement-title">New announcement</div>
-        <div class="new-announcement-form">
-            <label for="title" required>Title:</label><br />
-            <input type="text" id="title" name="title"><br />
-            <label for="author" required>Author:</label><br />
-            <input type="text" id="author" name="author"><br />
-            <label for="category" required>Category:</label><br />
-            <input type="text" id="category" name="category"><br />
-            <label for="city" required>City:</label><br />
-            <input type="text" id="city" name="city"><br />
-            <label for="description" required>Description:</label><br />
-            <input type="text" id="description" name="description"><br />
-            <button class="card-game-button" onclick="addAnnouncement()" id="addAnnouncement">Add Announcement</button>
-        </div>
-    </div>
-</div>
 
 <div class="buttons-container">
     <button class="card-game-button" onclick="getAllUsers()" id="getAllUsers">Get Users</button>
