@@ -103,6 +103,7 @@ function addAnnouncement() {
         success: function (response) {
             clearNewAnnouncementForm()
             cancelNewAnnouncement()
+            location.reload()
         },
         error: function (response) {
             console.log("Coś poszło nie tak" + response)
@@ -123,6 +124,10 @@ function getAllUsers() {
     })
 }
 
+function loadAnnouncements() {
+    location.reload()
+}
+
 function getAllAnnouncements() {
     $.ajax({
         type: "POST",
@@ -136,34 +141,39 @@ function getAllAnnouncements() {
                 let announcementBox = document.createElement('div')
                 announcementBox.setAttribute('class', 'announcement-row')
 
-                let titleAuthorCategoryColumn = document.createElement('div')
-                titleAuthorCategoryColumn.setAttribute('class', 'announcement-column')
+                //let titleAuthorCategoryColumn = document.createElement('div')
+                //titleAuthorCategoryColumn.setAttribute('class', 'announcement-column')
 
                 let titleBox = document.createElement('div')
-                titleBox.textContent = "Title: " + response[i].title
+                titleBox.textContent = response[i].title
+                titleBox.setAttribute('class', 'announcement-inner-row-content')
 
                 let authorBox = document.createElement('div')
-                authorBox.textContent = "Author: " + response[i].author
+                authorBox.textContent = response[i].author
+                authorBox.setAttribute('class', 'announcement-inner-row-content')
 
                 let categoryBox = document.createElement('div')
-                categoryBox.textContent = "Category: " + response[i].category
+                categoryBox.textContent = response[i].category
+                categoryBox.setAttribute('class', 'announcement-inner-row-content')
 
-                titleAuthorCategoryColumn.appendChild(titleBox)
-                titleAuthorCategoryColumn.appendChild(authorBox)
-                titleAuthorCategoryColumn.appendChild(categoryBox)
+                //titleAuthorCategoryColumn.appendChild(titleBox)
+                //titleAuthorCategoryColumn.appendChild(authorBox)
+                //titleAuthorCategoryColumn.appendChild(categoryBox)
 
 
-                let dateCityColumn = document.createElement('div')
-                dateCityColumn.setAttribute('class', 'announcement-column')
+                //let dateCityColumn = document.createElement('div')
+                //dateCityColumn.setAttribute('class', 'announcement-column')
 
                 let dateBox = document.createElement('div')
-                dateBox.textContent = "Date: " + response[i].date
+                dateBox.textContent = response[i].date
+                dateBox.setAttribute('class', 'announcement-inner-row-content')
 
                 let cityBox = document.createElement('div')
-                cityBox.textContent = "City: " + response[i].city
+                cityBox.textContent = response[i].city
+                cityBox.setAttribute('class', 'announcement-inner-row-content')
 
-                dateCityColumn.appendChild(dateBox)
-                dateCityColumn.appendChild(cityBox)
+                //dateCityColumn.appendChild(dateBox)
+                //dateCityColumn.appendChild(cityBox)
 
                 let emptyColumn = document.createElement('div')
                 emptyColumn.setAttribute('class', 'announcement-column')
@@ -171,9 +181,14 @@ function getAllAnnouncements() {
                 let announcementInnerRow1 = document.createElement('div')
                 announcementInnerRow1.setAttribute('class', 'announcement-inner-row')
 
-                announcementInnerRow1.appendChild(titleAuthorCategoryColumn)
-                announcementInnerRow1.appendChild(dateCityColumn)
+                //announcementInnerRow1.appendChild(titleAuthorCategoryColumn)
+                //announcementInnerRow1.appendChild(dateCityColumn)
                 //announcementInnerRow1.appendChild(emptyColumn)
+                announcementInnerRow1.appendChild(titleBox);
+                announcementInnerRow1.appendChild(authorBox);
+                announcementInnerRow1.appendChild(categoryBox);
+                announcementInnerRow1.appendChild(cityBox);
+                announcementInnerRow1.appendChild(dateBox);
 
                 let announcementInnerRow2 = document.createElement('div')
                 announcementInnerRow2.setAttribute('class', 'announcement-inner-row')

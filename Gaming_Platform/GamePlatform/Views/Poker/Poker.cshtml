@@ -6,21 +6,40 @@
     <link rel="stylesheet" href="~/css/Poker.css" />
 }
 
-    <div class="page-container">
+    <div class="page-container" id="start">
         <div class="dark-overlay" id="dark-overlay-id"></div>
         <div class="banner-container">
         </div>
         <div class="page-title-container">Book4Book</div>
         <div class="menu-container">
-            <div class="menu-item">Start</div>
-            <div class="menu-item" onclick="NewAnnouncement()">Add Announcement</div>
-            <div class="menu-item" onclick="Login()">Login</div>
-            <div class="menu-item" onclick="RegisterUser()">Register</div>
-        </div>
-        <div class="announcements-container">
-            <div class="announcements-container-title">All Announcements</div>
-            <div class="announcements-table" id="announcements-table-id">
+            <div class="menu-left-side">
+                <div class="menu-item">Start</div>
+                <div class="menu-item" onclick="getAllAnnouncements()">Announcements</div>
+                <div class="menu-item">About</div>
             </div>
+            <div class="menu-right-side">
+                <div class="menu-item" onclick="Login()">Login</div>
+                <div class="menu-item" onclick="RegisterUser()">Register</div>
+            </div>
+        </div>
+        <div class="announcements-container" id="announcements">
+            <div class="announcements-container-title">All Announcements</div>
+            <div class="announcement-buttons-box">
+                <button class="card-game-button" onclick="loadAnnouncements()" id="loadAnnouncements">Refresh Announcements</button>
+                <button class="card-game-button" onclick="NewAnnouncement()" id="addAnnouncement">Add Announcement</button>
+            </div>
+            <div class="announcements-table" id="announcements-table-id">
+                <div class="announcement-table-header">
+                    <div class="announcement-table-coulmn">Title</div>
+                    <div class="announcement-table-coulmn">Author</div>
+                    <div class="announcement-table-coulmn">Category</div>
+                    <div class="announcement-table-coulmn">City</div>
+                    <div class="announcement-table-coulmn">Date</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-container" id="about">
+            Book4Book dziala na zasadzie popularnego w ostatnich latach OLX. To portal przede wszystkim dla fanow ksiazek, miejsce w ktorym bezplatnie moga wystawic swoje ulubione powiesci i wymieniac sie razem z innymi ksiazkoholikami. Clou projektu jest bardzo proste - uzytkownik rejestruje sie na strone podajac podstawowe dane takie jak login i haslo. Klikajac w zakladke "dodaj ogloszenie" moze dodac krotka informacje na temat ksiazki tj: nazwe, autora oraz gatunek literacki. Uzytkownicy wymieniaja sie ksiazkami lokalnie. Portal zastrzega sobie wystawianie ogloszen platnych.
         </div>
 
         <div class="popup-container" id="register-container-id">
@@ -101,8 +120,3 @@
             </div>
         </div>
     </div>
-
-<div class="buttons-container">
-    <button class="card-game-button" onclick="getAllUsers()" id="getAllUsers">Get Users</button>
-    <button class="card-game-button" onclick="getAllAnnouncements()" id="getAllAnnouncements">Get Announcements</button>
-</div>
